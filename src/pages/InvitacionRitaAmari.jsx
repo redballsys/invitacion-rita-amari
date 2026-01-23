@@ -243,9 +243,6 @@ export default function InvitacionRitaAmari() {
                     >
                       {nombre}
                     </p>
-                    <p className="text-center text-[11px] tracking-widest text-black/70 mt-1">
-                      LA BELLA Y LA BESTIA
-                    </p>
                   </div>
                 </motion.div>
               </div>
