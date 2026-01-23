@@ -341,21 +341,7 @@ export default function InvitacionRitaAmari() {
                 </div>
               </motion.div>
 
-              {/* Nota */}
-              <motion.div
-                className="mt-6 text-center text-white/90 text-sm"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.75 }}
-              >
-                <p className="inline-flex items-center justify-center gap-2">
-                  <Heart className="w-4 h-4" />
-                  No hay dress code. Lo importante es que vengas.
-                </p>
-                <p className="mt-2 text-white/80 text-xs tracking-widest">
-                  MÚSICA: LA BELLA Y LA BESTIA
-                </p>
-              </motion.div>
+              {/* Nota */}              
 
               <div className="mt-6 text-center text-[10px] text-white/60">
                 Hecho por <strong>RedballSystems</strong> para ver en móvil
