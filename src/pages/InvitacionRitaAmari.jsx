@@ -65,16 +65,15 @@ export default function InvitacionRitaAmari() {
     // Audio
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
 
     useEffect(() => {
         const enableSound = () => {
             if (!audioRef.current) return;
 
             if (!isPlaying) {
-                audioRef.current
-                    .play()
-                    .then(() => setIsPlaying(true))
-                    .catch(() => { });
+                audioRef.current.muted = isMuted;
+                audioRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
             }
 
             window.removeEventListener("touchstart", enableSound);
@@ -88,21 +87,16 @@ export default function InvitacionRitaAmari() {
             window.removeEventListener("touchstart", enableSound);
             window.removeEventListener("click", enableSound);
         };
-    }, [isPlaying]);
+    }, [isPlaying, isMuted]);
 
-    const toggleAudio = () => {
+    const toggleMute = () => {
         const a = audioRef.current;
         if (!a) return;
 
-        if (a.paused) {
-            a.play()
-                .then(() => setIsPlaying(true))
-                .catch(() => { });
-        } else {
-            a.pause();
-            setIsPlaying(false);
-        }
+        a.muted = !a.muted;
+        setIsMuted(a.muted);
     };
+
 
     return (
         <div className="relative w-full min-h-[100svh] overflow-x-hidden bg-[#07162f]">
@@ -130,17 +124,14 @@ export default function InvitacionRitaAmari() {
 
                     {/* Botón flotante música */}
                     <button
-                        onClick={toggleAudio}
-                        aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
+                        onClick={toggleMute}
+                        aria-label={isMuted ? "Activar sonido" : "Silenciar música"}
                         className="fixed bottom-5 right-5 z-50 rounded-full shadow-lg text-white p-3 active:scale-95 focus:outline-none"
                         style={{ backgroundColor: "#0B1B3A" }}
                     >
-                        {isPlaying ? (
-                            <Music2 className="w-5 h-5" />
-                        ) : (
-                            <VolumeX className="w-5 h-5" />
-                        )}
+                        {isMuted ? <VolumeX className="w-5 h-5" /> : <Music2 className="w-5 h-5" />}
                     </button>
+
 
                     {/* Tarjeta con marco visible completo (contain) */}
                     <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl min-h-[860px]">
