@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.font-vibes {
+  font-family: "Great Vibes", cursive;
+}
+
+.font-cormorant {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
