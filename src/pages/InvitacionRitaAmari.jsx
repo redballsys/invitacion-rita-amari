@@ -105,230 +105,264 @@ export default function InvitacionRitaAmari() {
   };
 
   return (
-    <div className="min-h-screen w-full flex justify-center bg-black">
-      <div className="w-full max-w-sm px-4 py-6 relative">
-        <audio
-          ref={audioRef}
-          src="/audio/bella-y-bestia.mp3"
-          loop
-          preload="auto"
-        />
+    <div className="relative w-full min-h-[100svh] overflow-x-hidden bg-[#07162f]">
+      {/* Fondo fijo detrás (sin márgenes negros) */}
+      <img
+        src="/images/frame-bella.png"
+        alt=""
+        className="fixed inset-0 w-full h-full object-cover object-center"
+        aria-hidden="true"
+      />
 
-        {/* Botón flotante música */}
-        <button
-          onClick={toggleAudio}
-          aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
-          className="fixed bottom-5 right-5 z-50 rounded-full shadow-lg text-white p-3 active:scale-95 focus:outline-none"
-          style={{ backgroundColor: "#0B1B3A" }}
-        >
-          {isPlaying ? (
-            <Music2 className="w-5 h-5" />
-          ) : (
-            <VolumeX className="w-5 h-5" />
-          )}
-        </button>
+      {/* Capa ligera para legibilidad */}
+      <div className="fixed inset-0 bg-black/10" aria-hidden="true" />
 
-        {/* Tarjeta */}
-        <div
-          className="relative w-full overflow-hidden rounded-3xl shadow-2xl"
-          style={{ minHeight: "760px" }}
-        >
-          {/* Fondo fijo (estable en mobile) */}
-          <img
-            src="/images/frame-bella.png"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            aria-hidden="true"
+      {/* Contenido scrolleable */}
+      <div className="relative z-10 w-full flex justify-center px-3 py-6">
+        <div className="w-full max-w-[430px]">
+          {/* Audio */}
+          <audio
+            ref={audioRef}
+            src="/audio/bella-y-bestia.mp3"
+            loop
+            preload="auto"
           />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/10" />
+          {/* Botón flotante música */}
+          <button
+            onClick={toggleAudio}
+            aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
+            className="fixed bottom-5 right-5 z-50 rounded-full shadow-lg text-white p-3 active:scale-95 focus:outline-none"
+            style={{ backgroundColor: "#0B1B3A" }}
+          >
+            {isPlaying ? (
+              <Music2 className="w-5 h-5" />
+            ) : (
+              <VolumeX className="w-5 h-5" />
+            )}
+          </button>
 
-          <div className="relative z-10 px-6 pt-14 pb-8">
-            {/* Texto tipo cuento (stagger) */}
-            <motion.div
-              variants={storyContainer}
-              initial="hidden"
-              animate="show"
-              className="text-center"
-            >
-              {/* Línea cuento + brillo sutil */}
-              <motion.p
-                variants={storyLine}
-                className="font-vibes text-white/95 text-3xl leading-tight"
-                animate={{
-                  textShadow: [
-                    "0 0 0px rgba(255,255,255,0.0)",
-                    "0 0 14px rgba(255,255,255,0.35)",
-                    "0 0 0px rgba(255,255,255,0.0)",
-                  ],
-                }}
-                transition={{
-                  duration: 2.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                Había una vez, en el gran reino de la magia y los cuentos
-              </motion.p>
+          {/* Tarjeta con marco visible completo (contain) */}
+          <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl min-h-[860px]">
+            {/* Relleno detrás para evitar negros si sobra espacio */}
+            <div className="absolute inset-0 bg-[#07162f]" aria-hidden="true" />
 
-              {/* Línea celebración */}
-              <motion.p
-                variants={storyLine}
-                className="font-cormorant text-white/90 text-lg leading-snug mt-1"
-              >
-                una celebración muy especial que está por comenzar
-              </motion.p>
+            {/* Marco completo */}
+            <img
+              src="/images/frame-bella.png"
+              alt=""
+              className="absolute inset-0 w-full h-full object-contain object-center"
+              aria-hidden="true"
+            />
 
-              {/* Línea invitación */}
-              <motion.p
-                variants={storyLine}
-                className="font-poppins mt-3 text-white/85 text-sm leading-snug"
-              >
-                ¡Te invitamos a estar en el cumpleaños de la princesa!
-              </motion.p>
-            </motion.div>
+            {/* Overlay suave */}
+            <div className="absolute inset-0 bg-black/10" aria-hidden="true" />
 
-            {/* Bloque marco + listón */}
-            <div className="relative mt-4">
+            {/* Contenido */}
+            <div className="relative z-10 px-6 pt-10 pb-8">
+              {/* Texto tipo cuento (stagger) */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 8 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="flex justify-center relative z-20 translate-y-6 -mb-6"
+                variants={storyContainer}
+                initial="hidden"
+                animate="show"
+                className="text-center min-h-[120px]"
               >
-                <img
-                  src="/images/marco-princesa.png"
-                  alt="Marco dorado con rosas"
-                  loading="eager"
-                  className="w-[17rem] max-w-full drop-shadow-2xl"
-                />
-              </motion.div>
-
-              <motion.div
-                className="-mt-16 mx-auto w-full relative z-10"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.15 }}
-              >
-                <div
-                  className="relative mx-auto w-full rounded-xl px-4 py-3 shadow-lg"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #E7D08B 0%, #C8A24A 45%, #9A7427 100%)",
-                    border: "1px solid rgba(255,255,255,0.25)",
+                {/* Línea cuento + brillo sutil */}
+                <motion.p
+                  variants={storyLine}
+                  className="font-vibes text-white/95 text-3xl leading-tight"
+                  animate={{
+                    textShadow: [
+                      "0 0 0px rgba(255,255,255,0.0)",
+                      "0 0 14px rgba(255,255,255,0.35)",
+                      "0 0 0px rgba(255,255,255,0.0)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 2.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
                   }}
                 >
-                  <p
-                    className="text-center text-3xl font-extrabold italic"
+                  Había una vez, en el gran reino de la magia y los cuentos
+                </motion.p>
+
+                {/* Línea celebración */}
+                <motion.p
+                  variants={storyLine}
+                  className="font-cormorant text-white/90 text-lg leading-snug mt-1"
+                >
+                  una celebración muy especial que está por comenzar
+                </motion.p>
+
+                {/* Línea invitación */}
+                <motion.p
+                  variants={storyLine}
+                  className="font-poppins mt-3 text-white/85 text-sm leading-snug"
+                >
+                  ¡Te invitamos a estar en el cumpleaños de la princesa!
+                </motion.p>
+              </motion.div>
+
+              {/* Bloque marco + listón */}
+              <div className="relative mt-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 8 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="flex justify-center relative z-20 translate-y-6 -mb-6"
+                >
+                  <img
+                    src="/images/marco-princesa.png"
+                    alt="Marco dorado con rosas"
+                    loading="eager"
+                    className="w-[17rem] h-auto max-w-full drop-shadow-2xl"
+                  />
+                </motion.div>
+
+                <motion.div
+                  className="-mt-16 mx-auto w-full relative z-10"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.75, delay: 0.15 }}
+                >
+                  <div
+                    className="relative mx-auto w-full rounded-xl px-4 py-3 shadow-lg"
                     style={{
-                      color: "#7A1433",
-                      textShadow: "0 1px 2px rgba(0,0,0,0.35)",
+                      background:
+                        "linear-gradient(180deg, #E7D08B 0%, #C8A24A 45%, #9A7427 100%)",
+                      border: "1px solid rgba(255,255,255,0.25)",
                     }}
                   >
-                    {nombre}
+                    <p
+                      className="text-center text-3xl font-extrabold italic"
+                      style={{
+                        color: "#7A1433",
+                        textShadow: "0 1px 2px rgba(0,0,0,0.35)",
+                      }}
+                    >
+                      {nombre}
+                    </p>
+                    <p className="text-center text-[11px] tracking-widest text-black/70 mt-1">
+                      LA BELLA Y LA BESTIA
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Texto de invitación */}
+              <motion.div
+                className="mt-6 text-center text-white/90 text-sm leading-relaxed"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.3 }}
+              >
+                <p>
+                  Te invitamos a una tarde mágica para celebrar a{" "}
+                  <span className="font-semibold">{nombre}</span>.
+                </p>
+              </motion.div>
+
+              {/* Contador */}
+              <motion.div
+                className="mt-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-4"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.45 }}
+              >
+                <p className="text-center text-[11px] tracking-widest text-white/80">
+                  {timeLeft.diff === 0 ? "¡HOY ES EL GRAN DÍA!" : "FALTA POCO"}
+                </p>
+
+                {timeLeft.diff > 0 ? (
+                  <div className="mt-3 grid grid-cols-4 gap-2">
+                    {[
+                      { label: "DÍAS", value: pad2(timeLeft.days) },
+                      { label: "HRS", value: pad2(timeLeft.hours) },
+                      { label: "MIN", value: pad2(timeLeft.minutes) },
+                      { label: "SEG", value: pad2(timeLeft.seconds) },
+                    ].map((x) => (
+                      <div
+                        key={x.label}
+                        className="rounded-xl bg-white/10 p-2 text-center border border-white/10"
+                      >
+                        <p className="text-2xl font-extrabold text-white">
+                          {x.value}
+                        </p>
+                        <p className="text-[10px] text-white/70 tracking-widest">
+                          {x.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-2 text-center text-sm text-white/90">
+                    ¡Te esperamos hoy a las{" "}
+                    <span className="font-semibold">{horaTexto}</span>!
+                  </p>
+                )}
+              </motion.div>
+
+              {/* Detalles */}
+              <motion.div
+                className="mt-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-4"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.6 }}
+              >
+                <div className="flex items-center justify-center gap-2 text-white">
+                  <Calendar className="w-4 h-4" />
+                  <p className="text-sm font-semibold">
+                    {fechaTexto} · {horaTexto}
                   </p>
                 </div>
-              </motion.div>
-            </div>
 
-            {/* Texto de invitación */}
-            <motion.div
-              className="mt-6 text-center text-white/90 text-sm leading-relaxed"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.3 }}
-            >
-              <p>
-                Te invitamos a una tarde mágica para celebrar a{" "}
-                <span className="font-semibold">{nombre}</span>.
-              </p>
-            </motion.div>
+                <div className="mt-3 text-center text-white/90 text-sm leading-relaxed">
+                  <p className="inline-flex items-start gap-2 justify-center">
+                    <MapPin className="w-4 h-4 mt-[2px]" />
+                    <span>
+                      {direccionLineas[0]}
+                      <br />
+                      {direccionLineas[1]}
+                      <br />
+                      {direccionLineas[2]}
+                    </span>
+                  </p>
 
-            {/* Contador */}
-            <motion.div
-              className="mt-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-4"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.45 }}
-            >
-              <p className="text-center text-[11px] tracking-widest text-white/80">
-                {timeLeft.diff === 0 ? "¡HOY ES EL GRAN DÍA!" : "FALTA POCO"}
-              </p>
-
-              {timeLeft.diff > 0 ? (
-                <div className="mt-3 grid grid-cols-4 gap-2">
-                  {[
-                    { label: "DÍAS", value: pad2(timeLeft.days) },
-                    { label: "HRS", value: pad2(timeLeft.hours) },
-                    { label: "MIN", value: pad2(timeLeft.minutes) },
-                    { label: "SEG", value: pad2(timeLeft.seconds) },
-                  ].map((x) => (
-                    <div
-                      key={x.label}
-                      className="rounded-xl bg-white/10 p-2 text-center border border-white/10"
-                    >
-                      <p className="text-2xl font-extrabold text-white">
-                        {x.value}
-                      </p>
-                      <p className="text-[10px] text-white/70 tracking-widest">
-                        {x.label}
-                      </p>
-                    </div>
-                  ))}
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-block mt-4 rounded-full px-5 py-2 text-sm font-semibold text-white shadow-md active:scale-[0.99]"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, #C8A24A 0%, #9A7427 100%)",
+                    }}
+                  >
+                    Cómo llegar
+                  </a>
                 </div>
-              ) : (
-                <p className="mt-2 text-center text-sm text-white/90">
-                  ¡Te esperamos hoy a las{" "}
-                  <span className="font-semibold">{horaTexto}</span>!
-                </p>
-              )}
-            </motion.div>
+              </motion.div>
 
-            {/* Detalles */}
-            <motion.div
-              className="mt-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-4"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.6 }}
-            >
-              <div className="flex items-center justify-center gap-2 text-white">
-                <Calendar className="w-4 h-4" />
-                <p className="text-sm font-semibold">
-                  {fechaTexto} · {horaTexto}
+              {/* Nota */}
+              <motion.div
+                className="mt-6 text-center text-white/90 text-sm"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.75 }}
+              >
+                <p className="inline-flex items-center justify-center gap-2">
+                  <Heart className="w-4 h-4" />
+                  No hay dress code. Lo importante es que vengas.
                 </p>
+                <p className="mt-2 text-white/80 text-xs tracking-widest">
+                  MÚSICA: LA BELLA Y LA BESTIA
+                </p>
+              </motion.div>
+
+              <div className="mt-6 text-center text-[10px] text-white/60">
+                Hecho por <strong>RedballSystems</strong> para ver en móvil
               </div>
-
-              <div className="mt-3 text-center text-white/90 text-sm leading-relaxed">
-                <p className="inline-flex items-start gap-2 justify-center">
-                  <MapPin className="w-4 h-4 mt-[2px]" />
-                  <span>
-                    {direccionLineas[0]}
-                    <br />
-                    {direccionLineas[1]}
-                    <br />
-                    {direccionLineas[2]}
-                  </span>
-                </p>
-
-                <a
-                  href={mapsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-block mt-4 rounded-full px-5 py-2 text-sm font-semibold text-white shadow-md active:scale-[0.99]"
-                  style={{
-                    background: "linear-gradient(180deg, #C8A24A 0%, #9A7427 100%)",
-                  }}
-                >
-                  Cómo llegar
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Nota */}
-
-            <div className="mt-6 text-center text-[10px] text-white/60">
-              Hecho por <strong>RedballSystems</strong>
             </div>
           </div>
         </div>
