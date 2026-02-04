@@ -190,17 +190,6 @@ export default function InvitacionRitaAmari() {
 
   return (
     <div className="relative w-full min-h-[100svh] overflow-x-hidden bg-[#07162f]">
-      {/* Fondo fijo detrás (sin márgenes negros) */}
-      <img
-        src="/images/frame-bella.png"
-        alt=""
-        className="fixed inset-0 w-full h-full object-cover object-center"
-        aria-hidden="true"
-      />
-
-      {/* Capa ligera para legibilidad */}
-      <div className="fixed inset-0 bg-black/10" aria-hidden="true" />
-
       {/* Contenido scrolleable */}
       <div className="relative z-10 w-full flex justify-center px-3 py-6">
         <div className="w-full max-w-[430px]">
@@ -325,15 +314,8 @@ export default function InvitacionRitaAmari() {
                 </motion.div>
               </div>
 
-              <div className="relative mt-4">
-                <img
-                  src="/images/frame-bella.png"
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-contain object-center opacity-90"
-                  aria-hidden="true"
-                />
-
-                <div className="relative z-10 px-2 py-6">
+              <div className="relative mt-4 flex flex-col items-center">
+                <div className="w-full max-w-[360px] px-3 py-6">
                   <motion.div
                     className="flex justify-center"
                     initial={{ opacity: 0, y: 10 }}
@@ -343,14 +325,14 @@ export default function InvitacionRitaAmari() {
                     <img
                       src="/images/img_anio.png"
                       alt="Cumple 4 años"
-                      className="w-[72%] max-w-[290px] h-auto"
+                      className="w-[70%] max-w-[260px] h-auto"
                       loading="eager"
                     />
                   </motion.div>
 
                   {/* Contador */}
                   <motion.div
-                    className="mt-6 mx-auto w-[92%] max-w-[360px] rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 px-4 py-4"
+                    className="mt-6 w-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 px-4 py-4"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.75, delay: 0.45 }}
@@ -387,21 +369,21 @@ export default function InvitacionRitaAmari() {
                       </p>
                     )}
                   </motion.div>
-
-                  {/* Texto de invitación */}
-                  <motion.div
-                    className="mt-6 text-center text-white/95 text-sm leading-relaxed"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.75, delay: 0.55 }}
-                  >
-                    <p className="font-cormorant text-lg tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
-                      Te invitamos a una tarde mágica para celebrar a{" "}
-                      <span className="font-semibold text-[#F7E3A1]">{nombre}</span>.
-                    </p>
-                  </motion.div>
                 </div>
               </div>
+
+              {/* Texto de invitación */}
+              <motion.div
+                className="mt-2 text-center text-white/95 text-sm leading-relaxed"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.55 }}
+              >
+                <p className="font-cormorant text-lg tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
+                  Te invitamos a una tarde mágica para celebrar a{" "}
+                  <span className="font-semibold text-[#F7E3A1]">{nombre}</span>.
+                </p>
+              </motion.div>
 
               {/* Detalles */}
               <motion.div
