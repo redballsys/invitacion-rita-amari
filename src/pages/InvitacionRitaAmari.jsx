@@ -325,71 +325,83 @@ export default function InvitacionRitaAmari() {
                 </motion.div>
               </div>
 
-              {/* Texto de invitación */}
-              <motion.div
-                className="mt-6 text-center text-white/90 text-sm leading-relaxed"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.3 }}
-              >
-                <p>
-                  Te invitamos a una tarde mágica para celebrar a{" "}
-                  <span className="font-semibold">{nombre}</span>.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="mt-4 flex justify-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.35 }}
-              >
+              <div className="relative mt-4">
                 <img
-                  src="/images/img_anio.png"
-                  alt="Cumple 4 años"
-                  className="w-[70%] max-w-[280px] h-auto"
-                  loading="eager"
+                  src="/images/frame-bella.png"
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-contain object-center opacity-90"
+                  aria-hidden="true"
                 />
-              </motion.div>
 
-              {/* Contador */}
-              <motion.div
-                className="mt-6 mx-auto w-[92%] max-w-[360px] rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 px-4 py-4"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.45 }}
-              >
-                <p className="text-center text-[11px] tracking-widest text-white/80">
-                  {timeLeft.diff === 0 ? "¡HOY ES EL GRAN DÍA!" : "FALTA POCO"}
-                </p>
+                <div className="relative z-10 px-2 py-6">
+                  <motion.div
+                    className="flex justify-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.75, delay: 0.3 }}
+                  >
+                    <img
+                      src="/images/img_anio.png"
+                      alt="Cumple 4 años"
+                      className="w-[72%] max-w-[290px] h-auto"
+                      loading="eager"
+                    />
+                  </motion.div>
 
-                {timeLeft.diff > 0 ? (
-                  <div className="mt-3 grid grid-cols-4 gap-2">
-                    {[
-                      { label: "DÍAS", value: pad2(timeLeft.days) },
-                      { label: "HRS", value: pad2(timeLeft.hours) },
-                      { label: "MIN", value: pad2(timeLeft.minutes) },
-                      { label: "SEG", value: pad2(timeLeft.seconds) },
-                    ].map((x) => (
-                      <div
-                        key={x.label}
-                        className="rounded-xl bg-white/10 border border-white/10 px-2 py-3 text-center"
-                      >
-                        <p className="text-[26px] leading-none font-extrabold text-white">
-                          {x.value}
-                        </p>
-                        <p className="mt-1 text-[10px] text-white/70 tracking-widest">
-                          {x.label}
-                        </p>
+                  {/* Contador */}
+                  <motion.div
+                    className="mt-6 mx-auto w-[92%] max-w-[360px] rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 px-4 py-4"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.75, delay: 0.45 }}
+                  >
+                    <p className="text-center text-[11px] tracking-widest text-white/80">
+                      {timeLeft.diff === 0 ? "¡HOY ES EL GRAN DÍA!" : "FALTA POCO"}
+                    </p>
+
+                    {timeLeft.diff > 0 ? (
+                      <div className="mt-3 grid grid-cols-4 gap-2">
+                        {[
+                          { label: "DÍAS", value: pad2(timeLeft.days) },
+                          { label: "HRS", value: pad2(timeLeft.hours) },
+                          { label: "MIN", value: pad2(timeLeft.minutes) },
+                          { label: "SEG", value: pad2(timeLeft.seconds) },
+                        ].map((x) => (
+                          <div
+                            key={x.label}
+                            className="rounded-xl bg-white/10 border border-white/10 px-2 py-3 text-center"
+                          >
+                            <p className="text-[26px] leading-none font-extrabold text-white">
+                              {x.value}
+                            </p>
+                            <p className="mt-1 text-[10px] text-white/70 tracking-widest">
+                              {x.label}
+                            </p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="mt-2 text-center text-sm text-white/90">
-                    ¡Te esperamos hoy a las <span className="font-semibold">{horaTexto}</span>!
-                  </p>
-                )}
-              </motion.div>
+                    ) : (
+                      <p className="mt-2 text-center text-sm text-white/90">
+                        ¡Te esperamos hoy a las{" "}
+                        <span className="font-semibold">{horaTexto}</span>!
+                      </p>
+                    )}
+                  </motion.div>
+
+                  {/* Texto de invitación */}
+                  <motion.div
+                    className="mt-6 text-center text-white/95 text-sm leading-relaxed"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.75, delay: 0.55 }}
+                  >
+                    <p className="font-cormorant text-lg tracking-wide drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
+                      Te invitamos a una tarde mágica para celebrar a{" "}
+                      <span className="font-semibold text-[#F7E3A1]">{nombre}</span>.
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
 
               {/* Detalles */}
               <motion.div
