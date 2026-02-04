@@ -211,6 +211,14 @@ export default function InvitacionRitaAmari() {
             {/* Relleno detrás para evitar negros si sobra espacio */}
             <div className="absolute inset-0 bg-[#07162f]" aria-hidden="true" />
 
+            {/* Fondo decorativo */}
+            <img
+              src="/images/fond_02.1.png"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              aria-hidden="true"
+            />
+
             {/* Marco completo */}
             <img
               src="/images/frame-bella.png"
