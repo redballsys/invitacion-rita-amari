@@ -338,6 +338,20 @@ export default function InvitacionRitaAmari() {
                 </p>
               </motion.div>
 
+              <motion.div
+                className="mt-4 flex justify-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.35 }}
+              >
+                <img
+                  src="/images/img_anio.png"
+                  alt="Cumple 4 años"
+                  className="w-[70%] max-w-[280px] h-auto"
+                  loading="eager"
+                />
+              </motion.div>
+
               {/* Contador */}
               <motion.div
                 className="mt-6 mx-auto w-[92%] max-w-[360px] rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 px-4 py-4"
